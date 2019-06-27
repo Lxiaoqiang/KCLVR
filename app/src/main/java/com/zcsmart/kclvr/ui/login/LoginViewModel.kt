@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import com.zcsmart.kclvr.data.LoginRepository
-import com.zcsmart.kclvr.data.Result
+import com.zcsmart.kclvr.model.repository.LoginRepository
+import com.zcsmart.kclvr.model.bean.Result
 
 import com.zcsmart.kclvr.R
 

@@ -8,6 +8,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -16,8 +17,14 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.zcsmart.kclvr.R
+import com.zcsmart.kclvr.model.http.RetrofitClient
+import com.zcsmart.kclvr.model.http.WanandroidApi
+import com.zcsmart.kclvr.model.repository.HomeRepository
+import kotlinx.coroutines.runBlocking
 
 class LoginActivity : AppCompatActivity() {
+
+    private val TAG = "LoginActivity"
 
     private lateinit var loginViewModel: LoginViewModel
 

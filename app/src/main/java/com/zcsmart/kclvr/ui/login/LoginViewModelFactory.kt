@@ -2,8 +2,8 @@ package com.zcsmart.kclvr.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.zcsmart.kclvr.data.LoginDataSource
-import com.zcsmart.kclvr.data.LoginRepository
+import com.zcsmart.kclvr.model.viewmodel.LoginDataSource
+import com.zcsmart.kclvr.model.repository.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.
