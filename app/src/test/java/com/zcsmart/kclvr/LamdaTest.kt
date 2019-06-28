@@ -28,12 +28,20 @@ fun main(){
 //    var b : (Int, Int) -> Int = {x,y -> x + y}
 //    println(b(1,3))
 
-    val a = test(1,2)
-    val b = test(1, num(1,2))
-    val c =  test(10) { num1: Int, num2: Int ->  num1 + num2 }
-    println("a : $a, b: $b, c: $c")
+//    val a = test(1,2)
+//    val b = test(1, num(1,2))
+//    val c =  test(10) { num1: Int, num2: Int ->  num1 + num2 }
+//    println("a : $a, b: $b, c: $c")
+
+    //var/val 变量名: (参数类型、参数类型...) -> 返回类型 = {参数、参数.. -> 参数操作代码}
+    var a:(x: Int, y: Int) -> Int = {x,y ->x + y}
+    //var/val 变量名 = {参数类型、参数类型... -> 参数操作代码}
+    var b = {x:Int,y:Int -> x + y}
+}
 
 
+fun lamFun(a: Int,b: (x: Int) -> Int): Int{
+    return a + b.invoke(5)
 }
 
 fun test(a : Int , b : (num1 : Int , num2 : Int) -> Int) : Int{

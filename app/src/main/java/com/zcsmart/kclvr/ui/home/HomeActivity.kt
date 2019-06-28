@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
 
     private val TAG = "HomeActivity"
 
-    private val mTitles = arrayOf("首页","最新项目","体系","导航")
+    private val mTitles = arrayOf("首页","最新项目","体系","导航","效果")
 
     private var fragments = arrayListOf<Fragment>()
 
@@ -30,6 +30,7 @@ class HomeActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
         fragments.add(ProjectFragment.newInstance())
         fragments.add(SystemFragment.newInstance())
         fragments.add(NavigationFragment.newInstance())
+        fragments.add(AnimaDemoFragment.newInstance())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,24 +41,28 @@ class HomeActivity : AppCompatActivity() ,NavigationView.OnNavigationItemSelecte
     }
 
     private fun initViewPager(){
-        viewpagerHome.adapter = object : FragmentPagerAdapter(supportFragmentManager){
-            override fun getItem(position: Int): Fragment {
-                return fragments[position]
-            }
+        viewpagerHome.run {
+            adapter = object : FragmentPagerAdapter(supportFragmentManager) {
+                override fun getItem(position: Int): Fragment {
+                    return fragments[position]
+                }
 
-            override fun getCount(): Int {
-                return mTitles.size
-            }
+                override fun getCount(): Int {
+                    return mTitles.size
+                }
 
-            override fun getPageTitle(position: Int): CharSequence? {
-                return mTitles[position]
+                override fun getPageTitle(position: Int): CharSequence? {
+                    return mTitles[position]
+                }
             }
         }
     }
 
     private fun initTabLayout(){
-        tablayoutHome.tabMode = TabLayout.MODE_FIXED
-        tablayoutHome.setupWithViewPager(viewpagerHome)
+        tablayoutHome.run {
+            tabMode = TabLayout.MODE_FIXED
+            setupWithViewPager(viewpagerHome)
+        }
     }
 
 
