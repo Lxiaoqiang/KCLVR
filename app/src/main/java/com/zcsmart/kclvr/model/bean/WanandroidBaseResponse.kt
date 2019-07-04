@@ -6,4 +6,4 @@ package com.zcsmart.kclvr.model.bean
  * @discription
  *
  */
-data class WanandroidBaseResponse<T>(val errorCode: Int, val errorMsg: String, val data: T)
+data class WanandroidBaseResponse<out T>(val errorCode: Int, val errorMsg: String, val data: T)

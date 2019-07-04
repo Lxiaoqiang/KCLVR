@@ -18,6 +18,10 @@ class RecyclerAboutActivity : AppCompatActivity(){
             var intent = Intent(RecyclerAboutActivity@this,ViewpagerActivity::class.java)
             startActivity(intent)
         }
+        btnLoopRecyclerView.setOnClickListener {
+            var intent = Intent(RecyclerAboutActivity@this,LoopRecyclerViewActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package com.zcsmart.kclvr.model.repository
 
+import com.zcsmart.kclvr.base.BaseRepository
 import com.zcsmart.kclvr.model.bean.ArticleList
 import com.zcsmart.kclvr.model.bean.BannerBean
 import com.zcsmart.kclvr.model.bean.WanandroidBaseResponse
@@ -11,7 +12,7 @@ import com.zcsmart.kclvr.model.http.RetrofitClient
  * @discription
  *
  */
-class HomeRepository :BaseRepository(){
+class HomeRepository : BaseRepository(){
 
     suspend fun getBanner(): WanandroidBaseResponse<List<BannerBean>>{
         return apiCall { RetrofitClient.service.getBanner() }

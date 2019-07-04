@@ -1,4 +1,4 @@
-package com.zcsmart.kclvr.model.repository
+package com.zcsmart.kclvr.base
 
 import com.zcsmart.kclvr.model.bean.WanandroidBaseResponse
 

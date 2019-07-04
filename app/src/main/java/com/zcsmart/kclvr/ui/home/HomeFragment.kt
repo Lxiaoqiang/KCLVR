@@ -2,18 +2,19 @@ package com.zcsmart.kclvr.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
 
 import com.zcsmart.kclvr.R
 import com.zcsmart.kclvr.adapter.HomeArticleAdapter
+import com.zcsmart.kclvr.base.BaseFragment
 import com.zcsmart.kclvr.model.viewmodel.HomeViewModel
+import com.zcsmart.kclvr.util.CustomToast
 import com.zcsmart.kclvr.view.SpaceItemDecoration
+import com.zcsmart.kclvr.vo.LoadingMS
+import com.zcsmart.kclvr.vo.Loadingve
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,23 +30,16 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class HomeFragment : Fragment() {
-
+class HomeFragment : BaseFragment<HomeViewModel>() {
 
     private val mAdapter by lazy { HomeArticleAdapter() }
 
-    private lateinit var viewModel: HomeViewModel
+    private var currentPage = 0
+
+    override fun layoutResId() = R.layout.fragment_home
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,10 +49,16 @@ class HomeFragment : Fragment() {
         initData()
     }
 
-    private fun initView() {
+    override fun initView() {
         recyclerHomeF.run {
             layoutManager = LinearLayoutManager(activity)
             addItemDecoration(SpaceItemDecoration(20))
+        }
+        swipeRefreshHome.run {
+            setOnRefreshListener {
+                currentPage = 0
+                mViewModel.getArticles(true,currentPage)
+            }
         }
     }
 
@@ -67,19 +67,51 @@ class HomeFragment : Fragment() {
             adapter = mAdapter
         }
         mAdapter.run {
+            setEnableLoadMore(true)
             setOnItemClickListener { adapter, view, position ->
 
             }
-        }
+            setOnLoadMoreListener({
+                mViewModel.getArticles(false,currentPage)
 
+            }, recyclerHomeF)
+        }
     }
 
     private fun initData() {
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        viewModel.getArticles(0)
-        viewModel.articleList().observe(this, Observer {
-            mAdapter.addData(it.datas)
-        })
+        mViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        mViewModel.run {
+            getArticles(true,currentPage)
+            articleList().observe(this@HomeFragment, Observer {
+                mAdapter.run {
+                    if (swipeRefreshHome.isRefreshing) {
+                        replaceData(it.datas)
+                    } else {
+                        addData(it.datas)
+                    }
+                    loadMoreComplete()
+                }
+                currentPage++
+            })
+
+            getMTip().observe(this@HomeFragment, Observer {
+                CustomToast.toast(context!!,it.message)
+            })
+
+            getMLoading().observe(this@HomeFragment, Observer {
+                when(it.MS){
+                    Loadingve.REFRESH_SHOW ->{
+                        swipeRefreshHome.isRefreshing = true
+                    }
+                    LoadingMS.HIDE ->{
+                        swipeRefreshHome.isRefreshing = false
+                        mAdapter.loadMoreComplete()
+                    }
+                }
+            })
+
+        }
+
     }
 
     override fun onDetach() {

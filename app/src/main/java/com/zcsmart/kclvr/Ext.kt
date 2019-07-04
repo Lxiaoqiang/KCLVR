@@ -9,7 +9,7 @@ package com.zcsmart.kclvr
 
 fun <T> ArrayList<T>.arrayListOfNulls(size: Int): ArrayList<T>{
     var result = arrayListOf<T>()
-    for (i in 0..size){
+    for (i in 0 until  size){
         result.add(null as T)
     }
     return result
