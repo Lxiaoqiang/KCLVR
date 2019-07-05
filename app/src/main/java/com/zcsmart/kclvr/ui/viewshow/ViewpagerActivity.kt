@@ -1,21 +1,16 @@
-package com.zcsmart.kclvr.ui.recyclerview
+package com.zcsmart.kclvr.ui.viewshow
 
-import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.zcsmart.kclvr.R
-import com.zcsmart.kclvr.arrayListOfNulls
+import com.lhq.banner.arrayListOfNulls
 import com.zcsmart.kclvr.view.ViewpagerLayoutManager
 import kotlinx.android.synthetic.main.activity_viewpager.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class ViewpagerActivity : AppCompatActivity() {

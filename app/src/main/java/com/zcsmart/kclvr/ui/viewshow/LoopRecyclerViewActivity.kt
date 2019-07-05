@@ -1,11 +1,11 @@
-package com.zcsmart.kclvr.ui.recyclerview
+package com.zcsmart.kclvr.ui.viewshow
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.zcsmart.kclvr.R
-import com.zcsmart.kclvr.arrayListOfNulls
+import com.lhq.banner.arrayListOfNulls
 import com.zcsmart.kclvr.view.LoopHorizontallyLayoutManager
 import kotlinx.android.synthetic.main.activity_loop_recycler_view.*
 

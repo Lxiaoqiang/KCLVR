@@ -1,6 +1,5 @@
 package com.zcsmart.kclvr.util
 
-import android.app.Activity
 import android.content.Context
 import android.os.Handler
 import android.text.TextUtils

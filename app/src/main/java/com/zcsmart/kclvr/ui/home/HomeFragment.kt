@@ -13,7 +13,6 @@ import com.zcsmart.kclvr.base.BaseFragment
 import com.zcsmart.kclvr.model.viewmodel.HomeViewModel
 import com.zcsmart.kclvr.util.CustomToast
 import com.zcsmart.kclvr.view.SpaceItemDecoration
-import com.zcsmart.kclvr.vo.LoadingMS
 import com.zcsmart.kclvr.vo.Loadingve
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -53,6 +52,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         recyclerHomeF.run {
             layoutManager = LinearLayoutManager(activity)
             addItemDecoration(SpaceItemDecoration(20))
+            adapter = mAdapter
         }
         swipeRefreshHome.run {
             setOnRefreshListener {
@@ -63,11 +63,7 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
     }
 
     private fun initAdapter() {
-        recyclerHomeF.run {
-            adapter = mAdapter
-        }
         mAdapter.run {
-            setEnableLoadMore(true)
             setOnItemClickListener { adapter, view, position ->
 
             }
@@ -88,8 +84,8 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
                         replaceData(it.datas)
                     } else {
                         addData(it.datas)
+                        loadMoreEnd()
                     }
-                    loadMoreComplete()
                 }
                 currentPage++
             })
@@ -103,13 +99,12 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
                     Loadingve.REFRESH_SHOW ->{
                         swipeRefreshHome.isRefreshing = true
                     }
-                    LoadingMS.HIDE ->{
+                    Loadingve.HIDE ->{
                         swipeRefreshHome.isRefreshing = false
                         mAdapter.loadMoreComplete()
                     }
                 }
             })
-
         }
 
     }

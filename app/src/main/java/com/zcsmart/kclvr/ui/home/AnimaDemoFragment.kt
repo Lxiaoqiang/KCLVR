@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.zcsmart.kclvr.R
-import com.zcsmart.kclvr.ui.recyclerview.RecyclerAboutActivity
+import com.zcsmart.kclvr.ui.viewshow.RecyclerAboutActivity
 import kotlinx.android.synthetic.main.fragment_anima_demo.*
 
 // TODO: Rename parameter arguments, choose names that match

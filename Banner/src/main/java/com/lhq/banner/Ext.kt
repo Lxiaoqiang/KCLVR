@@ -1,4 +1,4 @@
-package com.zcsmart.kclvr
+package com.lhq.banner
 
 /**
  * @Date 2019/6/28 17:27

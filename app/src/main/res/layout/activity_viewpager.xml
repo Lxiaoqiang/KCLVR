@@ -6,6 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rvPager"
-        tools:context=".ui.recyclerview.ViewpagerActivity">
+        tools:context=".ui.viewshow.ViewpagerActivity">
 
 </androidx.recyclerview.widget.RecyclerView>

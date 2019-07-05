@@ -52,6 +52,9 @@ open class BaseViewModel: ViewModel() {
                     is ConnectException -> {
                         mTip.value = Tip("连接超时，请稍后再试")
                     }
+                    else ->{
+                        mTip.value = Tip("未知异常")
+                    }
                 }
                 getMLoading().value = Loadingve.createLoadingHide()
             },{},true)

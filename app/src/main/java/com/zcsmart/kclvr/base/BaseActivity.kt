@@ -3,7 +3,6 @@ package com.zcsmart.kclvr.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
 import com.zcsmart.kclvr.vo.LoadingManager
 
 /**

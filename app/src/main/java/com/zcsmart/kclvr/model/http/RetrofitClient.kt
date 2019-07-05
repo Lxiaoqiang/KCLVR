@@ -1,6 +1,5 @@
 package com.zcsmart.kclvr.model.http
 
-import com.orhanobut.logger.Logger
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

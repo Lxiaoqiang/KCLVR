@@ -1,9 +1,8 @@
-package com.zcsmart.kclvr.ui.recyclerview
+package com.zcsmart.kclvr.ui.viewshow
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.zcsmart.kclvr.R
 import kotlinx.android.synthetic.main.activity_recycler_about.*
 
@@ -20,6 +19,10 @@ class RecyclerAboutActivity : AppCompatActivity(){
         }
         btnLoopRecyclerView.setOnClickListener {
             var intent = Intent(RecyclerAboutActivity@this,LoopRecyclerViewActivity::class.java)
+            startActivity(intent)
+        }
+        btnBannerView.setOnClickListener{
+            var intent = Intent(RecyclerAboutActivity@this,BannerActivity::class.java)
             startActivity(intent)
         }
     }

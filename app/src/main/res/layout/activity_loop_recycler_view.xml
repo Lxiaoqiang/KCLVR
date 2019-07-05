@@ -6,6 +6,6 @@
         android:id="@+id/recyclerLoop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.recyclerview.LoopRecyclerViewActivity">
+        tools:context=".ui.viewshow.LoopRecyclerViewActivity">
 
 </androidx.recyclerview.widget.RecyclerView>
